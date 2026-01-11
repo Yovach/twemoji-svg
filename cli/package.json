@@ -2,16 +2,18 @@
   "name": "@yovach/fetch-twemoji-svgs",
   "private": true,
   "type": "module",
-  "description": "",
-  "main": "index.js",
+  "main": "main.ts",
   "license": "MIT",
   "devDependencies": {
     "@tsconfig/node-ts": "^23.6.2",
     "@tsconfig/node24": "^24.0.3",
     "@tsconfig/strictest": "^2.0.8",
-    "@types/node": "24"
+    "@types/node": "24",
+    "@types/npmcli__package-json": "^4.0.4"
   },
   "dependencies": {
-    "tar": "^7.5.2"
+    "@npmcli/package-json": "^7.0.4",
+    "tar": "^7.5.2",
+    "zod": "^4.3.5"
   }
 }
