@@ -1,0 +1,21 @@
+{
+  "extends": ["@tsconfig/strictest", "@tsconfig/node24", "@tsconfig/node-ts"],
+  "compilerOptions": {
+    "module": "Node16",
+
+    "target": "es2022",
+    "lib": ["es2022", "ESNext"],
+    "types": ["node"],
+
+    "declaration": true,
+    "allowImportingTsExtensions": true,
+    "rewriteRelativeImportExtensions": true,
+    "noUncheckedSideEffectImports": true,
+
+    "checkJs": false,
+    "allowJs": false,
+    "isolatedDeclarations": true,
+    "noEmit": true
+  },
+  "include": ["**/*.ts"]
+}
