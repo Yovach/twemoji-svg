@@ -16,7 +16,7 @@ await downloadAndExtractFile(
 
 const pkg = await PackageJson.create(path.join(pkgFolder), {
   data: {
-    name: "@yovach/twemoji",
+    name: "twemoji-svg",
     license: latestVersion.license,
     version: latestVersion.version,
     files: ["dist"],
