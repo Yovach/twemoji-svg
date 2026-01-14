@@ -38,7 +38,7 @@ const pkg = await PackageJson.create(path.join(pkgFolder), {
     files: ["dist"],
     repository: {
       type: "git",
-      url: "https://github.com/" + env.GITHUB_REPOSITORY + ".git"
+      url: "git+https://github.com/" + env.GITHUB_REPOSITORY + ".git"
     },
     exports: {
       "./*": "./dist/*.svg",
