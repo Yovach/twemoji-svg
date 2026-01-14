@@ -1,11 +1,21 @@
 import PackageJson from "@npmcli/package-json";
 import path from "node:path";
 import { downloadAndExtractFile } from "./lib/degit.ts";
-import { fetchLatestTwemojiVersion as fetchLatestTwemojiData } from "./lib/helpers.ts";
+import { fetchLatestTwemojiVersion as fetchLatestTwemojiData, checkIfTagExists } from "./lib/helpers.ts";
 
 const pkgFolder = path.join(process.cwd(), "..", "pkg");
 
 const latestVersion = await fetchLatestTwemojiData();
+
+// Check if a tag already exists for this version
+const tagExists = await checkIfTagExists(latestVersion.version);
+
+if (tagExists) {
+  console.log(`Version v${latestVersion.version} already exists. No update needed.`);
+  process.exit(1);
+}
+
+console.log(`New version detected: v${latestVersion.version}. Updating...`);
 
 const downloadFolder = path.join(pkgFolder, "dist");
 await downloadAndExtractFile(
@@ -27,4 +37,4 @@ const pkg = await PackageJson.create(path.join(pkgFolder), {
 });
 await pkg.save();
 
-await pkg.fix();
+console.log(`Update completed for version v${latestVersion.version}`);
