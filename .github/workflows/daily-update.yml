@@ -7,7 +7,7 @@ on:
 
 permissions:
   id-token: write  # Required for OIDC
-  contents: read
+  contents: write
 
 jobs:
   update-twemoji:
@@ -42,9 +42,6 @@ jobs:
 
       - name: Create GitHub tag
         if: success()
-        permissions:
-          contents: read
-          packages: write
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
