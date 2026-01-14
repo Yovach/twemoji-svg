@@ -29,7 +29,7 @@ export async function checkIfTagExists(version: string): Promise<boolean> {
   try {
     // Get repository name from GitHub Actions environment or use default
     const repo = env.GITHUB_REPOSITORY;
-    const [owner, repoName] = repo.split('/', 2);
+    const [owner, repoName] = repo.split("/", 2);
 
     if (owner == null || repoName == null) {
       console.error("Invalid repository format. Expected 'owner/repo'");
@@ -44,8 +44,8 @@ export async function checkIfTagExists(version: string): Promise<boolean> {
     const response = await fetch(
       `https://api.github.com/repos/${owner}/${repoName}/git/ref/tags/v${version}`,
       {
-        headers
-      }
+        headers,
+      },
     );
 
     // If response is 200, the tag exists

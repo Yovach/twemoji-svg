@@ -7,6 +7,6 @@ const envSchema = z.object({
 });
 
 export const env: {
-    GITHUB_REPOSITORY: string;
-    GITHUB_TOKEN?: string | undefined;
+  GITHUB_REPOSITORY: string;
+  GITHUB_TOKEN?: string | undefined;
 } = envSchema.parse(process.env);
