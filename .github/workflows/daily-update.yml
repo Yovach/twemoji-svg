@@ -40,6 +40,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Publish to npm
+        run: npm publish --access public
+        working-directory: pkg
+
       - name: Create GitHub tag
         if: success()
         run: |
@@ -54,7 +58,3 @@ jobs:
           git push origin "v$VERSION"
 
           echo "Created and pushed tag v$VERSION"
-
-      - name: Publish to npm
-        run: npm publish --access public
-        working-directory: pkg
