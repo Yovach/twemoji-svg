@@ -5,6 +5,7 @@ import {
   fetchLatestTwemojiVersion as fetchLatestTwemojiData,
   checkIfTagExists,
 } from "./lib/helpers.ts";
+import { env } from "./lib/env.ts";
 
 const pkgFolder = path.join(process.cwd(), "..", "pkg");
 
@@ -35,6 +36,10 @@ const pkg = await PackageJson.create(path.join(pkgFolder), {
     license: latestVersion.license,
     version: latestVersion.version,
     files: ["dist"],
+    repository: {
+      type: "git",
+      url: "git+https://github.com/" + env.GITHUB_REPOSITORY + ".git"
+    },
     exports: {
       "./*": "./dist/*.svg",
     },
