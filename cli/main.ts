@@ -40,6 +40,8 @@ const pkg = await PackageJson.create(path.join(pkgFolder), {
     },
   },
 });
+
 await pkg.save();
 
 console.log(`Update completed for version v${latestVersion.version}`);
+console.log(`Tag v${latestVersion.version} will be created by GitHub Actions`);
