@@ -12,12 +12,12 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@6.0.1
+        uses: actions/checkout@v6.0.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install Node.js
-        uses: actions/setup-node@6.1.0
+        uses: actions/setup-node@v6.1.0
         with:
           node-version: 24
 
@@ -41,12 +41,12 @@ jobs:
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
-          
+
           # Get the version from package.json
           VERSION=$(node -p "require('./pkg/package.json').version")
-          
+
           # Create and push the tag
           git tag "v$VERSION"
           git push origin "v$VERSION"
-          
+
           echo "Created and pushed tag v$VERSION"
