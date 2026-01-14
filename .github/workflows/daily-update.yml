@@ -5,6 +5,10 @@ on:
     - cron: '0 0 * * *'  # Runs every day at midnight UTC
   workflow_dispatch:  # Allows manual triggering
 
+permissions:
+  id-token: write  # Required for OIDC
+  contents: read
+
 jobs:
   update-twemoji:
     name: Update Twemoji emojis
@@ -50,3 +54,7 @@ jobs:
           git push origin "v$VERSION"
 
           echo "Created and pushed tag v$VERSION"
+
+      - name: Publish to npm
+        run: npm publish --access public
+        working-directory: pkg
