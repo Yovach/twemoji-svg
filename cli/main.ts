@@ -30,7 +30,7 @@ await downloadAndExtractFile(
   downloadFolder,
 );
 
-const pkg = await PackageJson.create(path.join(pkgFolder), {
+const pkg = await PackageJson.create(pkgFolder, {
   data: {
     name: "twemoji-svg",
     license: latestVersion.license,
@@ -38,7 +38,11 @@ const pkg = await PackageJson.create(path.join(pkgFolder), {
     files: ["dist"],
     repository: {
       type: "git",
-      url: "git+https://github.com/" + env.GITHUB_REPOSITORY + ".git"
+      url: `git+https://github.com/${env.GITHUB_REPOSITORY}.git`
+    },
+    homepage: `https://github.com/${env.GITHUB_REPOSITORY}`,
+    bugs: {
+      url: `https://github.com/${env.GITHUB_REPOSITORY}/issues`
     },
     exports: {
       "./*": "./dist/*.svg",
