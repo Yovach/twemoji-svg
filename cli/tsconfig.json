@@ -14,7 +14,7 @@
 
     "checkJs": false,
     "allowJs": false,
-    "isolatedDeclarations": true,
+    "isolatedDeclarations": false,
     "noEmit": true
   },
   "include": ["**/*.ts"]

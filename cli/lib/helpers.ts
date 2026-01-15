@@ -7,11 +7,7 @@ const packageSchemaType = z.object({
   license: z.string(),
 });
 
-export async function fetchLatestTwemojiVersion(): Promise<{
-  version: string;
-  name: string;
-  license: string;
-}> {
+export async function fetchLatestTwemojiVersion(): Promise<z.infer<typeof packageSchemaType>> {
   const twemojiApiPackage = await fetch(
     "https://registry.npmjs.org/@twemoji/api/latest",
   );
@@ -28,8 +24,7 @@ export async function fetchLatestTwemojiVersion(): Promise<{
 export async function checkIfTagExists(version: string): Promise<boolean> {
   try {
     // Get repository name from GitHub Actions environment or use default
-    const repo = env.GITHUB_REPOSITORY;
-    const [owner, repoName] = repo.split("/", 2);
+    const [owner, repoName] = env.GITHUB_REPOSITORY.split("/", 2);
 
     if (owner == null || repoName == null) {
       console.error("Invalid repository format. Expected 'owner/repo'");
